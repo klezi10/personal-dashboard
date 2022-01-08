@@ -10,4 +10,22 @@ body {
   background-size: cover;
   color: #fff;
   text-shadow: 0px 0px 20px #aaaaaa;
+  font-family: 'Poppins', sans-serif;
+  margin: 0 5px;
+}
+
+main {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+h1 {
+  align-self: center;
+}
+
+#weather-author {
+  display: flex;
+  justify-content: space-between;
 }
