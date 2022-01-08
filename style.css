@@ -11,7 +11,7 @@ body {
   color: #fff;
   text-shadow: 0px 0px 20px #aaaaaa;
   font-family: 'Poppins', sans-serif;
-  margin: 0 5px;
+  margin: 0 7px;
 }
 
 main {
@@ -28,4 +28,20 @@ h1 {
 #weather-author {
   display: flex;
   justify-content: space-between;
+}
+
+.currency {
+  display: flex;
+}
+
+.currency-name {
+  font-weight: 700;
+}
+
+img.logo {
+  box-shadow: 0px 0px 20px #aaaaaa;
+}
+
+.currency p {
+  margin-left: 20px;
 }
