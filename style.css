@@ -34,14 +34,16 @@ h1 {
   display: flex;
 }
 
-.currency-name {
-  font-weight: 700;
+.currency p {
+  margin: 0 10px;
+  font-size: 2rem;
 }
 
 img.logo {
   box-shadow: 0px 0px 20px #aaaaaa;
 }
 
-.currency p {
-  margin-left: 20px;
+.currency-name,
+.currency-price {
+  font-weight: 700;
 }

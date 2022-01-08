@@ -27,6 +27,6 @@ fetch('https://api.coingecko.com/api/v3/coins/iota')
     currency.innerHTML = `
     <img src="${data.image.small}" class="logo" />
     <p class="currency-name">${data.name}</p>
-    <p class="currency-price">$${data.market_data.current_price.cad} / </p>
+    <p class="currency-price">$${data.market_data.current_price.cad}</p>
     `;
   });
