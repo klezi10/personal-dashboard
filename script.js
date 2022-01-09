@@ -37,7 +37,6 @@ fetch('https://api.coingecko.com/api/v3/coins/iota')
     return response.json();
   })
   .then((data) => {
-    // console.log(data);
     currency.innerHTML = `
     <img src="${data.image.small}" class="logo" />
     <p class="currency-name">${data.name} / USD</p>
@@ -58,12 +57,14 @@ fetch(currencyApiUrl)
     return response.json();
   })
   .then((data) => {
-    console.log(data);
     currency.innerHTML += `
-    <p class="usd currency-name">${data.query.base_currency} / THB ${data.data.THB}</p>
+    <p class="usd currency-name">${data.query.base_currency} / THB ฿${data.data.THB}</p>
     `;
   })
-  .catch((err) => console.error(err));
+  .catch((err) => {
+    console.error(err);
+    currency.textContent = err;
+  });
 
 //============TIME=============
 
@@ -77,7 +78,7 @@ function updateTime() {
 
 setInterval(updateTime, 1000);
 
-//TIME---------------------
+//================GEOLOCATION & WEATHER===============
 
 navigator.geolocation.getCurrentPosition((position) => {
   const lat = position.coords.latitude;
