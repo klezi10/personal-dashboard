@@ -33,7 +33,6 @@ h1 {
 .author {
   font-size: 10px;
   transform: translateY(75%);
-  display: inline-block;
 }
 
 .currency {
