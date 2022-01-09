@@ -14,10 +14,6 @@ const baseCurrency = `USD`;
 const currencyApiUrl = `https://freecurrencyapi.net/api/v2/latest?apikey=${currencyApiKey}&base_currency=${baseCurrency}`;
 // console.log(currencyApiUrl);
 
-const stockApiKey = `O8G0BWLB8KB81Q3H`;
-const scotiaBankUrl = `https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=BNS.TO&apikey=${stockApiKey}`;
-const rbcUrl = `https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=RY.TO&apikey=${stockApiKey}`;
-
 fetch(unsplashApiUrl, {
   headers: headers,
 })
@@ -62,38 +58,13 @@ fetch(currencyApiUrl)
   })
   .then((data) => {
     currency.innerHTML += `
-    <p class="usd currency-name">${data.query.base_currency} / THB ฿${data.data.THB}</p>
+    <p class="usd currency-name">${data.query.base_currency} / THB  ฿${data.data.THB}</p>
     `;
   })
   .catch((err) => {
     console.error(err);
     currency.textContent = err;
   });
-
-fetch(scotiaBankUrl)
-  .then((response) => {
-    if (!response.ok) {
-      throw Error('Something went wrong');
-    }
-    return response.json();
-  })
-  .then((data) => {
-    const packedData = {
-      symbol: data['Global Quote']['01. symbol'],
-      price: data['Global Quote']['05. price'],
-    };
-    stock.innerHTML += `
-    <p class="stock-name">${packedData.symbol} $${packedData.price}   </p>
-    `;
-  })
-  .catch((err) => {
-    console.error(err);
-    stock.textContent = err;
-  });
-
-fetch(rbcUrl)
-  .then((response) => response.json())
-  .then((data) => console.log(data));
 
 //============TIME=============
 
