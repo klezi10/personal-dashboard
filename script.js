@@ -1,5 +1,6 @@
 const author = document.querySelector('.author');
 const currency = document.querySelector('.currency');
+const weather = document.getElementById('weather');
 
 const headers = {
   Authorization: `Client-ID NEdkcl7_x9O2DlOiH5BU2eOW6QjGgVABkeLGQi-Jzgg`,
@@ -21,7 +22,12 @@ const unsplashApiUrl = `https://api.unsplash.com/photos/random/?orientation=land
 //   });
 
 fetch('https://api.coingecko.com/api/v3/coins/iota')
-  .then((response) => response.json())
+  .then((response) => {
+    if (!response.ok) {
+      throw Error('Something went wrong');
+    }
+    return response.json();
+  })
   .then((data) => {
     // console.log(data);
     currency.innerHTML = `
@@ -29,15 +35,36 @@ fetch('https://api.coingecko.com/api/v3/coins/iota')
     <p class="currency-name">${data.name}</p>
     <p class="currency-price">$${data.market_data.current_price.cad}</p>
     `;
+  })
+  .catch((err) => {
+    console.error(err);
+    currency.textContent = err;
   });
 
-navigator.geolocation.getCurrentPosition((position) => {
-  const lat = position.coords.latitude;
-  const lon = position.coords.latitude;
-  const weatherApiKey = `00341c3ea2dfdc0e655eb1592fd114b6`;
-  const weatherApiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${weatherApiKey}`;
-  console.log(weatherApiUrl);
-  fetch(weatherApiUrl)
-    .then((response) => response.json())
-    .then((data) => console.log(data));
-});
+// navigator.geolocation.getCurrentPosition((position) => {
+//   const lat = position.coords.latitude;
+//   const lon = position.coords.longitude;
+
+//   const weatherApiKey = `00341c3ea2dfdc0e655eb1592fd114b6`;
+//   const weatherApiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${weatherApiKey}&units=metric`;
+//   console.log(weatherApiUrl);
+//   fetch(weatherApiUrl)
+//     .then((response) => {
+//       if (!response.ok) {
+//         throw Error('Weather data is not available');
+//       }
+//       return response.json();
+//     })
+//     .then((data) => {
+//       console.log(data);
+//       const iconUrl = `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
+//       weather.innerHTML = `
+//       <img src=${iconUrl} />
+//       <p class="temp">${Math.round(data.main.temp)}°</p>
+//      <p>Rawai</p>
+//       `;
+//     })
+//     .catch((err) => {
+//       weather.textContent = err;
+//     });
+// });
