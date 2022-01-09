@@ -32,7 +32,11 @@ h1 {
 
 .author {
   font-size: 10px;
-  transform: translateY(75%);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  justify-content: flex-start;
+  margin-bottom: 20px;
 }
 
 .currency {
