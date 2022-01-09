@@ -41,6 +41,7 @@ h1 {
 
 .currency {
   display: flex;
+  flex-wrap: wrap;
 }
 
 .currency p {
@@ -77,4 +78,9 @@ img.logo {
   width: 100%;
   text-align: right;
   margin-top: -25px;
+}
+
+.usd {
+  display: block;
+  width: 100%;
 }

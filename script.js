@@ -8,6 +8,11 @@ const headers = {
 };
 const unsplashApiUrl = `https://api.unsplash.com/photos/random/?orientation=landscape&query=nature`;
 
+const currencyApiKey = `fcde4720-7103-11ec-b94e-d3f1c51b6c79`;
+const baseCurrency = `USD`;
+const currencyApiUrl = `https://freecurrencyapi.net/api/v2/latest?apikey=${currencyApiKey}&base_currency=${baseCurrency}`;
+console.log(currencyApiUrl);
+
 fetch(unsplashApiUrl, {
   headers: headers,
 })
@@ -22,6 +27,8 @@ fetch(unsplashApiUrl, {
     author.textContent = `Photo by: Christian Joudrey`;
   });
 
+// ==================CURRENCIES================
+
 fetch('https://api.coingecko.com/api/v3/coins/iota')
   .then((response) => {
     if (!response.ok) {
@@ -34,13 +41,31 @@ fetch('https://api.coingecko.com/api/v3/coins/iota')
     currency.innerHTML = `
     <img src="${data.image.small}" class="logo" />
     <p class="currency-name">${data.name}</p>
-    <p class="currency-price">$${data.market_data.current_price.cad}</p>
+    <p class="currency-price">$${data.market_data.current_price.usd}</p>
     `;
   })
   .catch((err) => {
     console.error(err);
     currency.textContent = err;
   });
+
+fetch(currencyApiUrl)
+  .then((response) => {
+    if (!response.ok) {
+      throw Error('Something went wrong');
+    }
+
+    return response.json();
+  })
+  .then((data) => {
+    console.log(data);
+    currency.innerHTML += `
+    <p class="usd">${data.query.base_currency} / THB ${data.data.THB}</p>
+    `;
+  })
+  .catch((err) => console.error(err));
+
+//============TIME=============
 
 function updateTime() {
   const currentTime = new Date().toLocaleTimeString([], {
@@ -51,6 +76,8 @@ function updateTime() {
 }
 
 setInterval(updateTime, 1000);
+
+//TIME---------------------
 
 navigator.geolocation.getCurrentPosition((position) => {
   const lat = position.coords.latitude;
