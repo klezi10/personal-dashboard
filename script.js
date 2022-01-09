@@ -1,6 +1,7 @@
 const author = document.querySelector('.author');
 const currency = document.querySelector('.currency');
 const weather = document.getElementById('weather');
+const time = document.querySelector('.time');
 
 const headers = {
   Authorization: `Client-ID NEdkcl7_x9O2DlOiH5BU2eOW6QjGgVABkeLGQi-Jzgg`,
@@ -41,13 +42,23 @@ fetch('https://api.coingecko.com/api/v3/coins/iota')
     currency.textContent = err;
   });
 
+function updateTime() {
+  const currentTime = new Date().toLocaleTimeString([], {
+    hour: '2-digit',
+    minute: '2-digit',
+  });
+  time.textContent = currentTime;
+}
+
+setInterval(updateTime, 1000);
+
 navigator.geolocation.getCurrentPosition((position) => {
   const lat = position.coords.latitude;
   const lon = position.coords.longitude;
 
   const weatherApiKey = `00341c3ea2dfdc0e655eb1592fd114b6`;
   const weatherApiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${weatherApiKey}&units=metric`;
-  console.log(weatherApiUrl);
+
   fetch(weatherApiUrl)
     .then((response) => {
       if (!response.ok) {
@@ -56,7 +67,6 @@ navigator.geolocation.getCurrentPosition((position) => {
       return response.json();
     })
     .then((data) => {
-      console.log(data);
       const iconUrl = `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
       weather.innerHTML = `
       <img src=${iconUrl} />
