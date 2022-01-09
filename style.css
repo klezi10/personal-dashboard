@@ -8,10 +8,10 @@ body {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  color: black;
+  color: #fff;
   text-shadow: 0px 0px 20px #aaaaaa;
   font-family: 'Poppins', sans-serif;
-  margin: 0 7px;
+  margin: 0 10px;
 }
 
 main {
@@ -32,8 +32,8 @@ h1 {
 
 .author {
   font-size: 10px;
-  /* margin: 0;
-  padding-top: 25px; */
+  transform: translateY(75%);
+  display: inline-block;
 }
 
 .currency {
@@ -56,10 +56,18 @@ img.logo {
 
 #weather {
   display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  margin: 0;
 }
 
 .temp {
-  align-self: center;
-  padding-right: 20px;
   font-weight: 700;
+}
+
+.city {
+  width: 100%;
+  text-align: right;
+  margin-top: -25px;
 }
