@@ -40,7 +40,7 @@ fetch('https://api.coingecko.com/api/v3/coins/iota')
     // console.log(data);
     currency.innerHTML = `
     <img src="${data.image.small}" class="logo" />
-    <p class="currency-name">${data.name}</p>
+    <p class="currency-name">${data.name} / USD</p>
     <p class="currency-price">$${data.market_data.current_price.usd}</p>
     `;
   })
@@ -60,7 +60,7 @@ fetch(currencyApiUrl)
   .then((data) => {
     console.log(data);
     currency.innerHTML += `
-    <p class="usd">${data.query.base_currency} / THB ${data.data.THB}</p>
+    <p class="usd currency-name">${data.query.base_currency} / THB ${data.data.THB}</p>
     `;
   })
   .catch((err) => console.error(err));
