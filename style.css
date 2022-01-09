@@ -65,6 +65,10 @@ img.logo {
   margin: 0;
 }
 
+.weather-img {
+  width: 80px;
+}
+
 .temp {
   font-weight: 700;
 }

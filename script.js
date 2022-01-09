@@ -15,11 +15,11 @@ fetch(unsplashApiUrl, {
   .then((data) => {
     // console.log(data);
     document.body.style.backgroundImage = `url(${data.urls.regular})`;
-    author.textContent = `By: ${data.user.name}`;
+    author.textContent = `Photo by: ${data.user.name}`;
   })
   .catch((err) => {
     document.body.style.backgroundImage = `url('https://images.unsplash.com/photo-1462400362591-9ca55235346a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyODkzNjR8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NDE2NDM4Njk&ixlib=rb-1.2.1&q=80&w=1080')`;
-    author.textContent = `By: Christian Joudrey`;
+    author.textContent = `Photo by: Christian Joudrey`;
   });
 
 fetch('https://api.coingecko.com/api/v3/coins/iota')
@@ -69,7 +69,7 @@ navigator.geolocation.getCurrentPosition((position) => {
     .then((data) => {
       const iconUrl = `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
       weather.innerHTML = `
-      <img src=${iconUrl} />
+      <img src=${iconUrl} class="weather-img" />
       <p class="temp">${Math.round(data.main.temp)}°</p>
      <p class="city">Rawai</p>
       `;
