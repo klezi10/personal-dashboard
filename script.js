@@ -121,16 +121,16 @@ function scotiaStock() {
   fetch(stockApiUrl)
     .then((response) => response.json())
     .then((data) => {
-      const newData = {
+      const stockData = {
         symbol: data['Global Quote']['01. symbol'],
         price: data['Global Quote']['05. price'],
         change: data['Global Quote']['10. change percent'],
       };
 
       stock.innerHTML += `
-      <p class="stock-name">${newData.symbol}
-      <span>$${newData.price}</span>
-      <span>${newData.change}</span>
+      <p class="stock-name">${stockData.symbol}
+      <span>$${stockData.price}</span>
+      <span>${stockData.change}</span>
       </p>
       `;
     });
@@ -143,18 +143,61 @@ function rbcStock() {
   fetch(stockApiUrl)
     .then((response) => response.json())
     .then((data) => {
-      console.log(data);
-
-      const newData = {
+      const stockData = {
         symbol: data['Global Quote']['01. symbol'],
         price: data['Global Quote']['05. price'],
         change: data['Global Quote']['10. change percent'],
       };
 
       stock.innerHTML += `
-      <p class="stock-name">${newData.symbol}
-      <span>$${newData.price}</span>
-      <span>${newData.change}</span>
+      <p class="stock-name">${stockData.symbol}
+      <span>$${stockData.price}</span>
+      <span>${stockData.change}</span>
+      </p>
+      `;
+    });
+}
+
+function tdStock() {
+  let company = 'TD.TRT';
+  const stockApiUrl = `https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${company}&apikey=${stockApiKey}`;
+
+  fetch(stockApiUrl)
+    .then((response) => response.json())
+    .then((data) => {
+      const stockData = {
+        symbol: data['Global Quote']['01. symbol'],
+        price: data['Global Quote']['05. price'],
+        change: data['Global Quote']['10. change percent'],
+      };
+
+      stock.innerHTML += `
+      <p class="stock-name">${stockData.symbol}
+      <span>$${stockData.price}</span>
+      <span>${stockData.change}</span>
+      </p>
+      `;
+    });
+}
+
+function bmoStock() {
+  let company = 'BMO.TRT';
+  const stockApiUrl = `https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${company}&apikey=${stockApiKey}`;
+
+  fetch(stockApiUrl)
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data);
+      const stockData = {
+        symbol: data['Global Quote']['01. symbol'],
+        price: data['Global Quote']['05. price'],
+        change: data['Global Quote']['10. change percent'],
+      };
+
+      stock.innerHTML += `
+      <p class="stock-name">${stockData.symbol}
+      <span>$${stockData.price}</span>
+      <span>${stockData.change}</span>
       </p>
       `;
     });
@@ -162,3 +205,5 @@ function rbcStock() {
 
 scotiaStock();
 rbcStock();
+tdStock();
+bmoStock();
