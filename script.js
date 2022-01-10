@@ -46,7 +46,9 @@ fetch('https://api.coingecko.com/api/v3/coins/iota')
     crypto.innerHTML = `
     <img src="${data.image.small}" class="logo" />
     <p class="currency-name">${data.name} / USD</p>
-    <p class="currency-price">$${data.market_data.current_price.usd}</p>
+    <p class="currency-price">$${parseFloat(
+      data.market_data.current_price.usd
+    )}</p>
     `;
   })
   .catch((err) => {
@@ -64,7 +66,7 @@ fetch(currencyApiUrl)
   .then((data) => {
     currency.innerHTML = `
     <p class="currency-name">${data.query.base_currency} / THB</p>
-    <p>฿${data.data.THB}</p>
+    <p>฿${parseFloat(data.data.THB).toFixed(2)}</p>
     `;
   })
   .catch((err) => {
@@ -113,6 +115,8 @@ navigator.geolocation.getCurrentPosition((position) => {
     });
 });
 
+// ======================= STOCK ==========================
+
 function scotiaStock() {
   let company = 'BNS.TRT';
   const stockApiUrl = `https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${company}&apikey=${stockApiKey}`;
@@ -122,14 +126,13 @@ function scotiaStock() {
     .then((data) => {
       const stockData = {
         symbol: data['Global Quote']['01. symbol'],
-        price: data['Global Quote']['05. price'],
-        change: data['Global Quote']['10. change percent'],
+        price: parseFloat(data['Global Quote']['05. price']),
       };
 
       stock.innerHTML += `
       <p class="stock-name">${stockData.symbol}
       <span>$${stockData.price}</span>
-      <span>${stockData.change}</span>
+    
       </p>
       `;
     });
@@ -144,14 +147,13 @@ function rbcStock() {
     .then((data) => {
       const stockData = {
         symbol: data['Global Quote']['01. symbol'],
-        price: data['Global Quote']['05. price'],
-        change: data['Global Quote']['10. change percent'],
+        price: parseFloat(data['Global Quote']['05. price']),
       };
 
       stock.innerHTML += `
       <p class="stock-name">${stockData.symbol}
       <span>$${stockData.price}</span>
-      <span>${stockData.change}</span>
+     
       </p>
       `;
     });
@@ -166,14 +168,13 @@ function tdStock() {
     .then((data) => {
       const stockData = {
         symbol: data['Global Quote']['01. symbol'],
-        price: data['Global Quote']['05. price'],
-        change: data['Global Quote']['10. change percent'],
+        price: parseFloat(data['Global Quote']['05. price']),
       };
 
       stock.innerHTML += `
       <p class="stock-name">${stockData.symbol}
       <span>$${stockData.price}</span>
-      <span>${stockData.change}</span>
+      
       </p>
       `;
     });
@@ -189,14 +190,13 @@ function bmoStock() {
       console.log(data);
       const stockData = {
         symbol: data['Global Quote']['01. symbol'],
-        price: data['Global Quote']['05. price'],
-        change: data['Global Quote']['10. change percent'],
+        price: parseFloat(data['Global Quote']['05. price']),
       };
 
       stock.innerHTML += `
       <p class="stock-name">${stockData.symbol}
       <span>$${stockData.price}</span>
-      <span>${stockData.change}</span>
+      
       </p>
       `;
     });
