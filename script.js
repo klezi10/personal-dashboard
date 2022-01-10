@@ -13,26 +13,25 @@ const unsplashApiUrl = `https://api.unsplash.com/photos/random/?orientation=land
 const currencyApiKey = `fcde4720-7103-11ec-b94e-d3f1c51b6c79`;
 const baseCurrency = `USD`;
 const currencyApiUrl = `https://freecurrencyapi.net/api/v2/latest?apikey=${currencyApiKey}&base_currency=${baseCurrency}`;
-// console.log(currencyApiUrl);
 
 const stockApiKey = `O8G0BWLB8KB81Q3H`;
 
 // const stockApiKey = `64b6070de486214c5a4358f3ff2d7ea3`;
 // const stockApiUrl = `http://api.marketstack.com/v1/currencies?access_key=64b6070de486214c5a4358f3ff2d7ea3`;
 
-// fetch(unsplashApiUrl, {
-//   headers: headers,
-// })
-//   .then((response) => response.json())
-//   .then((data) => {
-//     // console.log(data);
-//     document.body.style.backgroundImage = `url(${data.urls.regular})`;
-//     author.textContent = `Photo by: ${data.user.name}`;
-//   })
-//   .catch((err) => {
-//     document.body.style.backgroundImage = `url('https://images.unsplash.com/photo-1462400362591-9ca55235346a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyODkzNjR8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NDE2NDM4Njk&ixlib=rb-1.2.1&q=80&w=1080')`;
-//     author.textContent = `Photo by: Christian Joudrey`;
-//   });
+fetch(unsplashApiUrl, {
+  headers: headers,
+})
+  .then((response) => response.json())
+  .then((data) => {
+    // console.log(data);
+    document.body.style.backgroundImage = `url(${data.urls.regular})`;
+    author.textContent = `Photo by: ${data.user.name}`;
+  })
+  .catch((err) => {
+    document.body.style.backgroundImage = `url('https://images.unsplash.com/photo-1462400362591-9ca55235346a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyODkzNjR8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NDE2NDM4Njk&ixlib=rb-1.2.1&q=80&w=1080')`;
+    author.textContent = `Photo by: Christian Joudrey`;
+  });
 
 // ==================CURRENCIES================
 
@@ -75,44 +74,44 @@ fetch(currencyApiUrl)
 
 //============TIME=============
 
-// function updateTime() {
-//   const currentTime = new Date().toLocaleTimeString([], {
-//     hour: '2-digit',
-//     minute: '2-digit',
-//   });
-//   time.textContent = currentTime;
-// }
+function updateTime() {
+  const currentTime = new Date().toLocaleTimeString([], {
+    hour: '2-digit',
+    minute: '2-digit',
+  });
+  time.textContent = currentTime;
+}
 
-// setInterval(updateTime, 1000);
+setInterval(updateTime, 1000);
 
 //================GEOLOCATION & WEATHER===============
 
-// navigator.geolocation.getCurrentPosition((position) => {
-//   const lat = position.coords.latitude;
-//   const lon = position.coords.longitude;
+navigator.geolocation.getCurrentPosition((position) => {
+  const lat = position.coords.latitude;
+  const lon = position.coords.longitude;
 
-//   const weatherApiKey = `00341c3ea2dfdc0e655eb1592fd114b6`;
-//   const weatherApiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${weatherApiKey}&units=metric`;
+  const weatherApiKey = `00341c3ea2dfdc0e655eb1592fd114b6`;
+  const weatherApiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${weatherApiKey}&units=metric`;
 
-//   fetch(weatherApiUrl)
-//     .then((response) => {
-//       if (!response.ok) {
-//         throw Error('Weather data is not available');
-//       }
-//       return response.json();
-//     })
-//     .then((data) => {
-//       const iconUrl = `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
-//       weather.innerHTML = `
-//       <img src=${iconUrl} class="weather-img" />
-//       <p class="temp">${Math.round(data.main.temp)}°</p>
-//      <p class="city">Rawai</p>
-//       `;
-//     })
-//     .catch((err) => {
-//       weather.textContent = err;
-//     });
-// });
+  fetch(weatherApiUrl)
+    .then((response) => {
+      if (!response.ok) {
+        throw Error('Weather data is not available');
+      }
+      return response.json();
+    })
+    .then((data) => {
+      const iconUrl = `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
+      weather.innerHTML = `
+      <img src=${iconUrl} class="weather-img" />
+      <p class="temp">${Math.round(data.main.temp)}°</p>
+     <p class="city">Rawai</p>
+      `;
+    })
+    .catch((err) => {
+      weather.textContent = err;
+    });
+});
 
 function scotiaStock() {
   let company = 'BNS.TRT';
