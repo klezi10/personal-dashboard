@@ -8,7 +8,7 @@ body {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  color: #fff;
+  color: black;
   text-shadow: 0px 0px 20px #aaaaaa;
   font-family: 'Poppins', sans-serif;
   margin: 0 10px;
@@ -45,13 +45,15 @@ h1 {
 }
 
 .currency,
-.stock {
+.stock,
+.crypto {
   display: flex;
   flex-wrap: wrap;
 }
 
 .currency p,
-.stock p {
+.stock p,
+.crypto p {
   margin: 0 10px;
   font-size: 2rem;
 }
@@ -61,7 +63,6 @@ img.logo {
 }
 
 .currency-name,
-.currency-price,
 .stock-name {
   font-weight: 700;
 }
@@ -88,7 +89,10 @@ img.logo {
   margin-top: -25px;
 }
 
-.usd {
-  display: block;
+.stock p {
   width: 100%;
+}
+
+.stock p span {
+  font-weight: 400;
 }
