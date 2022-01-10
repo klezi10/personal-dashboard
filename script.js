@@ -16,15 +16,11 @@ const currencyApiUrl = `https://freecurrencyapi.net/api/v2/latest?apikey=${curre
 
 const stockApiKey = `O8G0BWLB8KB81Q3H`;
 
-// const stockApiKey = `64b6070de486214c5a4358f3ff2d7ea3`;
-// const stockApiUrl = `http://api.marketstack.com/v1/currencies?access_key=64b6070de486214c5a4358f3ff2d7ea3`;
-
 fetch(unsplashApiUrl, {
   headers: headers,
 })
   .then((response) => response.json())
   .then((data) => {
-    // console.log(data);
     document.body.style.backgroundImage = `url(${data.urls.regular})`;
     author.textContent = `Photo by: ${data.user.name}`;
   })
@@ -122,7 +118,12 @@ function scotiaStock() {
   const stockApiUrl = `https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${company}&apikey=${stockApiKey}`;
 
   fetch(stockApiUrl)
-    .then((response) => response.json())
+    .then((response) => {
+      if (!response.ok) {
+        throw Error('Something went wrong');
+      }
+      return response.json();
+    })
     .then((data) => {
       const stockData = {
         symbol: data['Global Quote']['01. symbol'],
@@ -130,7 +131,7 @@ function scotiaStock() {
       };
 
       stock.innerHTML += `
-      <p class="stock-name">${stockData.symbol}
+      <p class="stock-name">${stockData.symbol} - 
       <span>$${stockData.price}</span>
     
       </p>
@@ -143,7 +144,12 @@ function rbcStock() {
   const stockApiUrl = `https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${company}&apikey=${stockApiKey}`;
 
   fetch(stockApiUrl)
-    .then((response) => response.json())
+    .then((response) => {
+      if (!response.ok) {
+        throw Error('Something went wrong');
+      }
+      return response.json();
+    })
     .then((data) => {
       const stockData = {
         symbol: data['Global Quote']['01. symbol'],
@@ -151,9 +157,8 @@ function rbcStock() {
       };
 
       stock.innerHTML += `
-      <p class="stock-name">${stockData.symbol}
+      <p class="stock-name">${stockData.symbol}  -  
       <span>$${stockData.price}</span>
-     
       </p>
       `;
     });
@@ -164,7 +169,12 @@ function tdStock() {
   const stockApiUrl = `https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${company}&apikey=${stockApiKey}`;
 
   fetch(stockApiUrl)
-    .then((response) => response.json())
+    .then((response) => {
+      if (!response.ok) {
+        throw Error('Something went wrong');
+      }
+      return response.json();
+    })
     .then((data) => {
       const stockData = {
         symbol: data['Global Quote']['01. symbol'],
@@ -172,7 +182,7 @@ function tdStock() {
       };
 
       stock.innerHTML += `
-      <p class="stock-name">${stockData.symbol}
+      <p class="stock-name">${stockData.symbol}  -  
       <span>$${stockData.price}</span>
       
       </p>
@@ -185,16 +195,20 @@ function bmoStock() {
   const stockApiUrl = `https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${company}&apikey=${stockApiKey}`;
 
   fetch(stockApiUrl)
-    .then((response) => response.json())
+    .then((response) => {
+      if (!response.ok) {
+        throw Error('Something went wrong');
+      }
+      return response.json();
+    })
     .then((data) => {
-      console.log(data);
       const stockData = {
         symbol: data['Global Quote']['01. symbol'],
         price: parseFloat(data['Global Quote']['05. price']),
       };
 
       stock.innerHTML += `
-      <p class="stock-name">${stockData.symbol}
+      <p class="stock-name">${stockData.symbol}  -  
       <span>$${stockData.price}</span>
       
       </p>
