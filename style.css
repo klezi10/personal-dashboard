@@ -30,13 +30,19 @@ h1 {
   justify-content: space-between;
 }
 
-.author {
+.author,
+.coder {
   font-size: 10px;
   display: flex;
   flex-wrap: wrap;
   align-items: end;
   justify-content: flex-start;
   margin-bottom: 20px;
+}
+
+.coder a {
+  color: #fff;
+  padding: 0 2px;
 }
 
 .currency-stock {
@@ -127,7 +133,8 @@ img.logo {
   #weather {
     display: none;
   }
-  .author {
+  .author,
+  .coder {
     margin-bottom: 5px;
   }
   .currency-stock {
