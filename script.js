@@ -40,7 +40,7 @@ fetch('https://api.coingecko.com/api/v3/coins/iota')
   })
   .then((data) => {
     crypto.innerHTML = `
-    <img src="${data.image.small}" class="logo" />
+    <img src='iota_icon.png' class="logo" />
     <p class="currency-name">${data.name} / USD</p>
     <p class="currency-price">$${parseFloat(
       data.market_data.current_price.usd
