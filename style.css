@@ -42,6 +42,10 @@ h1 {
 .currency-stock {
   display: flex;
   flex-direction: column;
+  width: 300px;
+  background: rgba(255, 255, 255, 0.5);
+  color: white;
+  border-radius: 8px;
 }
 
 .currency,
@@ -98,8 +102,8 @@ img.logo {
 }
 
 .loader {
-  border: 10px solid #f3f3f3; /* Light grey */
-  border-top: 10px solid #3498db; /* Blue */
+  border: 10px solid #f3f3f3;
+  border-top: 10px solid #3498db;
   border-radius: 50%;
   width: 40px;
   height: 40px;
@@ -112,5 +116,27 @@ img.logo {
   }
   100% {
     transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 500px) {
+  .time {
+    display: none;
+  }
+  #weather {
+    display: none;
+  }
+  .author {
+    margin-bottom: 5px;
+  }
+  .currency-stock {
+    margin: 200px auto;
+    align-items: center;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+  }
+  .logo {
+    display: none;
   }
 }
