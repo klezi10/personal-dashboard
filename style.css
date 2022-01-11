@@ -45,6 +45,11 @@ h1 {
   padding: 0 2px;
 }
 
+.coder a:hover,
+.coder a:focus {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
 .currency-stock {
   margin-top: 10px;
   display: flex;
