@@ -22,7 +22,6 @@ fetch(unsplashApiUrl, {
 })
   .then((response) => response.json())
   .then((data) => {
-    console.log(data.location);
     document.body.style.backgroundImage = `url(${data.urls.regular})`;
     author.textContent = `Photo by: ${data.user.name}`;
     photoLocation.textContent = ` 📍 ${data.location.title}`;
