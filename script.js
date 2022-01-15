@@ -11,7 +11,7 @@ const headers = {
 const unsplashApiUrl = `https://api.unsplash.com/photos/random/?orientation=landscape&query=nature`;
 
 const currencyApiKey = `fcde4720-7103-11ec-b94e-d3f1c51b6c79`;
-const baseCurrency = `USD`;
+const baseCurrency = `CAD`;
 const currencyApiUrl = `https://freecurrencyapi.net/api/v2/latest?apikey=${currencyApiKey}&base_currency=${baseCurrency}`;
 
 const stockApiKey = `O8G0BWLB8KB81Q3H`;
@@ -60,6 +60,7 @@ fetch(currencyApiUrl)
     return response.json();
   })
   .then((data) => {
+    console.log(data.query);
     currency.innerHTML = `
     <p class="currency-name">${data.query.base_currency} / THB</p>
     <p>฿${parseFloat(data.data.THB).toFixed(2)}</p>
