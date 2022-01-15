@@ -30,7 +30,7 @@ h1 {
   justify-content: space-between;
 }
 
-.author,
+.author-location,
 .coder {
   font-size: 10px;
   display: flex;
@@ -38,6 +38,16 @@ h1 {
   align-items: end;
   justify-content: flex-start;
   margin-bottom: 20px;
+}
+
+.author {
+  margin-bottom: 0;
+  padding-top: 50px;
+}
+
+.location {
+  width: 100%;
+  margin-bottom: 0;
 }
 
 .coder a {
@@ -138,15 +148,22 @@ img.logo {
   #weather {
     display: none;
   }
-  .author,
-  .coder {
-    margin-bottom: 5px;
+
+  .author {
+    padding-top: 0;
   }
+
   .currency-stock {
     margin: 200px auto;
     align-items: center;
     text-align: center;
     background: rgba(0, 0, 0, 0.5);
     color: white;
+  }
+}
+
+@media (max-width: 650px) {
+  .location {
+    display: none;
   }
 }

@@ -1,4 +1,5 @@
 const author = document.querySelector('.author');
+const photoLocation = document.querySelector('.location');
 const crypto = document.querySelector('.crypto');
 const currency = document.querySelector('.currency');
 const weather = document.getElementById('weather');
@@ -21,8 +22,10 @@ fetch(unsplashApiUrl, {
 })
   .then((response) => response.json())
   .then((data) => {
+    console.log(data.location);
     document.body.style.backgroundImage = `url(${data.urls.regular})`;
     author.textContent = `Photo by: ${data.user.name}`;
+    photoLocation.textContent = ` 📍 ${data.location.title}`;
   })
   .catch((err) => {
     document.body.style.backgroundImage = `url('https://images.unsplash.com/photo-1462400362591-9ca55235346a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyODkzNjR8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NDE2NDM4Njk&ixlib=rb-1.2.1&q=80&w=1080')`;
@@ -60,7 +63,6 @@ fetch(currencyApiUrl)
     return response.json();
   })
   .then((data) => {
-    console.log(data.query);
     currency.innerHTML = `
     <p class="currency-name">${data.query.base_currency} / THB</p>
     <p>฿${parseFloat(data.data.THB).toFixed(2)}</p>
