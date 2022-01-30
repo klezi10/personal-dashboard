@@ -46,7 +46,7 @@ fetch('https://api.coingecko.com/api/v3/coins/iota')
     <p class="currency-name">${data.name} / USD</p>
     <p class="currency-price">$${parseFloat(
       data.market_data.current_price.usd
-    )}</p>
+    ).toFixed(2)}</p>
     `;
   })
   .catch((err) => {
