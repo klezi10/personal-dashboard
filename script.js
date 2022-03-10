@@ -13,7 +13,7 @@ const unsplashApiUrl = `https://api.unsplash.com/photos/random/?orientation=land
 
 const currencyApiKey = `fcde4720-7103-11ec-b94e-d3f1c51b6c79`;
 const baseCurrency = `CAD`;
-const currencyApiUrl = `https://freecurrencyapi.net/api/v2/latest?apikey=${currencyApiKey}&base_currency=${baseCurrency}`;
+const currencyApiUrl = `https://currencyapi.com/api/v2/latest?apikey=${currencyApiKey}&base_currency=${baseCurrency}`;
 
 const stockApiKey = `O8G0BWLB8KB81Q3H`;
 
@@ -63,8 +63,8 @@ fetch(currencyApiUrl)
   })
   .then((data) => {
     currency.innerHTML = `
-    <p class="currency-name">${data.query.base_currency} / THB</p>
-    <p>฿${parseFloat(data.data.THB).toFixed(2)}</p>
+    <p class="currency-name">${data.query.base_currency} / TRY</p>
+    <p>₺${parseFloat(data.data.TRY).toFixed(2)}</p>
     `;
   })
   .catch((err) => {
