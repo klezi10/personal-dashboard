@@ -105,7 +105,7 @@ navigator.geolocation.getCurrentPosition((position) => {
       weather.innerHTML = `
       <img src=${iconUrl} class="weather-img" />
       <p class="temp">${Math.round(data.main.temp)}°</p>
-     <p class="city">Rawai</p>
+     <p class="city">${data.name}</p>
       `;
     })
     .catch((err) => {
