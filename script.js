@@ -62,7 +62,6 @@ fetch(currencyApiUrl)
     return response.json();
   })
   .then((data) => {
-    console.log(data.data.CAD.code)
     currency.innerHTML = `
     <p class="currency-name">${data.data.CAD.code} / TRY</p>
     <p>₺${parseFloat(data.data.TRY.value).toFixed(2)}</p>
