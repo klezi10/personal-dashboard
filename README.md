@@ -56,4 +56,4 @@ I have repeated code and would like to learn how to improve by code by applying 
 
 ## Author
 
-- Website - [Klesta Luli](https://clever-turing-3f9e94.netlify.app/)
+- Website - [Klesta Luli](https://www.klesdev.com/)
